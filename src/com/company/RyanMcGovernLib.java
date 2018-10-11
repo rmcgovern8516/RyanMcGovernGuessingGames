@@ -18,6 +18,7 @@ public class RyanMcGovernLib {
     public static void guessAI(){
         int min = 1;
         int max = 100;
+        int numGuesses = 1;
         System.out.println("Think of a number between 1 and 100 to be the answer the AI will attempt to guess.");
         System.out.println("Type 'higher' if your # is higher than the current guess,'lower' if it's lower, or 'correct' if I got it.");
         int currentGuess = 50;
@@ -29,12 +30,30 @@ public class RyanMcGovernLib {
             if (Input.equals("higher")){
                 min = currentGuess;
                 currentGuess = (max+min)/2;
+                numGuesses++;
             }
             else if (Input.equals("lower")){
                 max = currentGuess;
                 currentGuess = (max+min)/2;
+                numGuesses++;
             }
         }
-        System.out.println("Congratulations! You won!");
+        System.out.println("I won with only "+numGuesses+" guesses!");
+    }
+
+    public static void chooseGame(){
+        System.out.println("Type 1 if you would like to guess a number 1-10. Type 2 if you would like the AI to guess your number of 1-100.");
+        Scanner input = new Scanner(System.in);
+        String Input = input.nextLine();
+        if (Input.equals("1")){
+            RyanMcGovernLib.guessGame();
+        }
+        else if (Input.equals("2")){
+            RyanMcGovernLib.guessAI();
+        }
+        else{
+            System.out.println("That isn't 1 or 2.");
+            RyanMcGovernLib.chooseGame();
+        }
     }
 }
