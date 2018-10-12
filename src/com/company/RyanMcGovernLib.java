@@ -4,20 +4,25 @@ import java.util.Scanner;
 public class RyanMcGovernLib {
     public static void guessGame(){
         double randomDouble = Math.random();
+        int numGuesses = 0;
         int answer = (int) (randomDouble*11);
         Scanner input = new Scanner(System.in);
         System.out.println("Try to guess the number: ");
         int guess = input.nextInt();
+        numGuesses++;
         while (!(guess==answer)){
             System.out.println("Please try again: ");
             guess = input.nextInt();
+            numGuesses++;
         }
-        System.out.println("Correct! The answer is "+answer+"!");
+        System.out.println("Correct! The answer is "+answer+"! You got it in only "+numGuesses+" guesses!");
+        System.out.println("Lets play a game again.");
+        chooseGame();
     }
 
     public static void guessAI(){
         int min = 1;
-        int max = 100;
+        int max = 101;
         int numGuesses = 1;
         System.out.println("Think of a number between 1 and 100 to be the answer the AI will attempt to guess.");
         System.out.println("Type 'higher' if your # is higher than the current guess,'lower' if it's lower, or 'correct' if I got it.");
@@ -39,6 +44,8 @@ public class RyanMcGovernLib {
             }
         }
         System.out.println("I won with only "+numGuesses+" guesses!");
+        System.out.println("Lets play a game again.");
+        chooseGame();
     }
 
     public static void chooseGame(){
